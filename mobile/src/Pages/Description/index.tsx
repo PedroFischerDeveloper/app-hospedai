@@ -1,11 +1,18 @@
 import React from 'react';
 import {ImageBackground} from 'react-native';
 
-import GlobalStyles, {Container, ContainerButton} from '../GlobalStyles';
-import {Box, Description} from './styles';
-
+import {
+  Box,
+  TextTitle,
+  Description,
+  Row,
+  LogoDescription,
+  Button,
+  ButtonDescription,
+  Starts,
+} from './styles';
+import GlobalStyles from '../GlobalStyles';
 // components
-import Title from '../Components/Title/Title';
 import useContrast from '../Contexts/contrastContext';
 import {useRoute} from '@react-navigation/native';
 
@@ -19,23 +26,19 @@ const Home = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
-      <Container background={contrast} accessible={true}>
-        <Title title={item.title} />
-        <Box>
-          <Description contrast={contrast}>{item.description}</Description>
-        </Box>
-        <Box>
-          <Description contrast={contrast}>
-            Endereço: {item.address} Cidade: {item.city} / UF: {item.uf}
-          </Description>
-        </Box>
-        <Box>
-          <Description contrast={contrast}>
-            Cidade: {item.city} / UF: {item.uf}
-          </Description>
-        </Box>
-        <ContainerButton />
-      </Container>
+      <Box>
+        <LogoDescription
+          source={require('../assets/Logo.jpeg')}
+          width={'120px'}
+          height={'120px'}
+        />
+        <TextTitle contrast={contrast}>{item.title}</TextTitle>
+        <Description contrast={contrast}>{item.description}</Description>
+        <Starts contrast={contrast}>Estrelas: {item.starts}</Starts>
+        <Button>
+          <ButtonDescription>Ver mais</ButtonDescription>
+        </Button>
+      </Box>
     </ImageBackground>
   );
 };

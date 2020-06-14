@@ -5,9 +5,11 @@ import {
   Box,
   TextTitle,
   Description,
-  RowButton,
+  Row,
+  LogoDescription,
   Button,
   ButtonDescription,
+  Starts,
 } from './styles';
 import GlobalStyles, {Container} from '../GlobalStyles';
 
@@ -85,24 +87,20 @@ const Home = () => {
           keyExtractor={item => String(item.id)}
           showsVerticalScrollIndicator={false}
           renderItem={({item: i}) => (
-            <Box background={contrast}>
+            <Box>
               <TextTitle contrast={contrast}>{i.title}</TextTitle>
-              <Description contrast={contrast}>{i.description}</Description>
-              <Description contrast={contrast}>
-                Estrelas: {i.starts}
-              </Description>
-              <RowButton>
-                <Button contrast={contrast} onPress={() => description(i)}>
-                  <ButtonDescription contrast={contrast}>
-                    Ver Mais
-                  </ButtonDescription>
-                </Button>
-                <Button contrast={contrast} onPress={() => description(i)}>
-                  <ButtonDescription contrast={contrast}>
-                    Comentários
-                  </ButtonDescription>
-                </Button>
-              </RowButton>
+              <Row>
+                <LogoDescription
+                  source={require('../assets/Logo.jpeg')}
+                  width={'120px'}
+                  height={'120px'}
+                />
+                <Description contrast={contrast}>{i.description}</Description>
+              </Row>
+              <Starts contrast={contrast}>Estrelas: {i.starts}</Starts>
+              <Button onPress={() => description(i)}>
+                <ButtonDescription>Ver mais</ButtonDescription>
+              </Button>
             </Box>
           )}
         />

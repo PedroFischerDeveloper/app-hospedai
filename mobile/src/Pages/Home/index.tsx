@@ -1,7 +1,7 @@
 import React from 'react';
 import {ImageBackground} from 'react-native';
 
-import GlobalStyles, {Container, ContainerButton} from '../GlobalStyles';
+import GlobalStyles, {Container, ContainerButton, Logo} from '../GlobalStyles';
 
 // components
 import Title from '../Components/Title/Title';
@@ -25,8 +25,9 @@ const Home = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
+      <Logo source={require('../assets/Logo.jpeg')} />
       <Container background={contrast} accessible={true}>
-        <Title title={'Hospedai'} />
+        <Title title={'Seja bem vindo'} />
         <ContainerButton>
           <Button title={'Entrar'} onPress={Login} />
           <Button title={'Cadastrar'} onPress={Create} />

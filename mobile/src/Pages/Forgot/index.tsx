@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {ImageBackground} from 'react-native';
 
-import GlobalStyles, {Container, ContainerButton} from '../GlobalStyles';
+import GlobalStyles, {Container, ContainerButton, Logo} from '../GlobalStyles';
 
 import {errorToast, messageToast} from '../toast/toast';
 
@@ -26,7 +26,7 @@ const Login = (_props: Props) => {
       errorToast('ERROR: O CAMPO DE E-MAIL NÃO DEVE FICAR EM BRANCO:');
       return false;
     }
-    navigation.navigate('Forgot');
+    navigation.navigate('Auth');
     messageToast('ENVIAMOS UM LINK PARA SEU E-MAIL:');
   };
 
@@ -34,12 +34,19 @@ const Login = (_props: Props) => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
+        <Logo
+        width={'50%'}
+        height={'25%'}
+        margin={'auto'}
+        source={require('../assets/Logo.jpeg')}
+      />
       <Container background={contrast} accessible={true}>
         <Title title={'Recupera senha'} />
         <ContainerButton>
           <Input
             placeholder={'INSIRA SEU E-MAIL: '}
             onChangeText={e => setEmail(e)}
+            isPassword={false}
           />
           <Button title={'Enviar'} onPress={Forgot} />
         </ContainerButton>

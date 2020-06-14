@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {ImageBackground} from 'react-native';
+import {ImageBackground, KeyboardAvoidingView} from 'react-native';
 
-import GlobalStyles, {Container, ContainerButton} from '../GlobalStyles';
+import GlobalStyles, {Container, ContainerButton, Logo} from '../GlobalStyles';
 
 import {errorToast} from '../toast/toast';
 
@@ -16,7 +16,6 @@ const Home = () => {
   const [hasError, setHasError] = useState(false);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [confPassword, setConfPassword] = useState();
   const [name, setName] = useState();
   const [phone, setPhone] = useState();
 
@@ -33,9 +32,6 @@ const Home = () => {
       setHasError(true);
     } else if (!password) {
       errorToast('ERROR: O CAMPO DE SENHA NÃO DEVE FICAR EM BRANCO');
-      setHasError(true);
-    } else if (!password !== confPassword) {
-      errorToast('ERROR: SENHA E CONFIRMAÇÃO DE SENHA NÃO CORRESPONDEM');
       setHasError(true);
     } else if (!phone) {
       errorToast('ERROR: O CAMPO DE TELEFONE NÃO DEVE FICAR EM BRANCO');
@@ -55,36 +51,39 @@ const Home = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
+      <Logo
+        width={'50%'}
+        height={'25%'}
+        margin={'auto'}
+        source={require('../assets/Logo.jpeg')}
+      />
       <Container background={contrast} accessible={true}>
-        <Title title={'Cadastro'} />
-        <ContainerButton>
-          <Input
-            placeholder={'NOME: '}
-            onChangeText={e => setName(e)}
-            isPassword={false}
-          />
-          <Input
-            placeholder={'E-MAIL: '}
-            onChangeText={e => setEmail(e)}
-            isPassword={false}
-          />
-          <Input
-            placeholder={'SENHA: '}
-            onChangeText={e => setPassword(e)}
-            isPassword={true}
-          />
-          <Input
-            placeholder={'CONFIRME A SENHA: '}
-            onChangeText={e => setConfPassword(e)}
-            isPassword={true}
-          />
-          <Input
-            placeholder={'TELEFONE: '}
-            isPassword={false}
-            onChangeText={e => setPhone(e)}
-          />
-          <Button title={'Salvar'} onPress={Create} />
-        </ContainerButton>
+        <KeyboardAvoidingView>
+          <Title title={'Cadastro'} />
+          <ContainerButton>
+            <Input
+              placeholder={'NOME: '}
+              onChangeText={e => setName(e)}
+              isPassword={false}
+            />
+            <Input
+              placeholder={'E-MAIL: '}
+              onChangeText={e => setEmail(e)}
+              isPassword={false}
+            />
+            <Input
+              placeholder={'SENHA: '}
+              onChangeText={e => setPassword(e)}
+              isPassword={true}
+            />
+            <Input
+              placeholder={'TELEFONE: '}
+              isPassword={false}
+              onChangeText={e => setPhone(e)}
+            />
+            <Button title={'Salvar'} onPress={Create} />
+          </ContainerButton>
+        </KeyboardAvoidingView>
       </Container>
     </ImageBackground>
   );

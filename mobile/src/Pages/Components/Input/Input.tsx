@@ -4,6 +4,8 @@ import useContrast from '../../Contexts/contrastContext';
 
 interface IProps {
   placeholder: string;
+  isPassword: boolean;
+  onChangeText: (value: any) => void;
 }
 
 const InputComponent = (_props: IProps) => {
@@ -16,6 +18,8 @@ const InputComponent = (_props: IProps) => {
       border={contrast}
       font={contrast}
       height={contrast}
+      secureTextEntry={_props.isPassword}
+      onChangeText={_props.onChangeText}
     />
   );
 };

@@ -14,7 +14,7 @@ export const Container = styled.View`
 export const ContainerButton = styled.View`
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 30px;
 `;
 
 const GlobalStyles = StyleSheet.create({

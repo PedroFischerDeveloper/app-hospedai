@@ -1,19 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ImageBackground} from 'react-native';
 
 import GlobalStyles, {Container, ContainerButton} from '../GlobalStyles';
+import {ForgotButton, TextForgot} from './styles';
+
+import {errorToast} from '../toast/toast';
 
 // components
 import Title from '../Components/Title/Title';
 import Button from '../Components/Button/Button';
 import Input from '../Components/Input/Input';
 import useContrast from '../Contexts/contrastContext';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
-  const {contrast} = useContrast();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const Login = () => {
-    console.log('');
+  const {contrast} = useContrast();
+  const navigation = useNavigation();
+
+  const Auth = () => {
+    if (!email) {
+      errorToast('ERROR: O E-MAIL NÃO PODE FICAR EM BRANCO!');
+      return false;
+    }
+
+    if (!password) {
+      errorToast('ERROR: A SENHA NÃO PODE FICAR EM BRANCO!');
+      return false;
+    }
+    navigation.navigate('Dashboard');
+  };
+
+  const Forgot = () => {
+    navigation.navigate('Forgot');
   };
 
   return (
@@ -23,10 +44,23 @@ const Login = () => {
       <Container background={contrast} accessible={true}>
         <Title title={'Login'} />
         <ContainerButton>
-          <Input placeholder={'E-MAIL: '} />
-          <Input placeholder={'SENHA: '} />
-          <Button title={'Logar'} onPress={Login} />
+          <Input
+            placeholder={'E-MAIL: '}
+            onChangeText={setEmail}
+            isPassword={false}
+          />
+          <Input
+            placeholder={'SENHA: '}
+            onChangeText={setPassword}
+            isPassword={true}
+          />
+          <Button title={'Logar'} onPress={Auth} />
         </ContainerButton>
+        <ForgotButton onPress={Forgot}>
+          <TextForgot font={contrast} color={contrast}>
+            Esqueceu a senha ?
+          </TextForgot>
+        </ForgotButton>
       </Container>
     </ImageBackground>
   );

@@ -7,6 +7,7 @@ import Auth from './Auth';
 import SignUp from './SignUp';
 import Forgot from './Forgot';
 import Dashboard from './Dashboard';
+import Description from './Description';
 
 const AppStack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const Routes = () => {
         <AppStack.Screen name="SignUp" component={SignUp} />
         <AppStack.Screen name="Forgot" component={Forgot} />
         <AppStack.Screen name="Dashboard" component={Dashboard} />
+        <AppStack.Screen name="Description" component={Description} />
       </AppStack.Navigator>
     </NavigationContainer>
   );

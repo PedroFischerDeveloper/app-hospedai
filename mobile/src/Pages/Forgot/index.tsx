@@ -1,94 +1,51 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {ImageBackground} from 'react-native';
 
-import {
-  View,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  ToastAndroid,
-} from 'react-native';
+import GlobalStyles, {Container, ContainerButton} from '../GlobalStyles';
 
-import {RectButton} from 'react-native-gesture-handler';
-import {useNavigation} from '@react-navigation/native';
-
-import GlobalStyles from '../GlobalStyles';
+import {errorToast, messageToast} from '../toast/toast';
 
 // components
 import Title from '../Components/Title/Title';
+import Button from '../Components/Button/Button';
 import Input from '../Components/Input/Input';
+import useContrast from '../Contexts/contrastContext';
+import {useNavigation} from '@react-navigation/native';
 
-const Auth = () => {
+interface Props {
+  email: string;
+}
+
+const Login = (_props: Props) => {
+  const [email, setEmail] = useState('');
+  const {contrast} = useContrast();
   const navigation = useNavigation();
 
-  const showToastWithGravity = () => {
-    ToastAndroid.showWithGravity(
-      'Enviamos um e-mail com link de recuperação',
-      ToastAndroid.LONG,
-      ToastAndroid.CENTER,
-    );
+  const Forgot = () => {
+    if (!email) {
+      errorToast('ERROR: O CAMPO DE E-MAIL NÃO DEVE FICAR EM BRANCO:');
+      return false;
+    }
+    navigation.navigate('Forgot');
+    messageToast('ENVIAMOS UM LINK PARA SEU E-MAIL:');
   };
 
-  function handleNavigation() {
-    navigation.navigate('Auth');
-    showToastWithGravity();
-  }
   return (
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
-      <View style={styles.container} accessible={true}>
-        <Title title={'Recuperar senha'} />
-        <View style={styles.containerButton}>
-          <Input title={'Digite seu e-mail'} />
-          <RectButton style={styles.button}>
-            <Text style={styles.text} onPress={handleNavigation}>
-              Enviar
-            </Text>
-          </RectButton>
-        </View>
-      </View>
+      <Container background={contrast} accessible={true}>
+        <Title title={'Recupera senha'} />
+        <ContainerButton>
+          <Input
+            placeholder={'INSIRA SEU E-MAIL: '}
+            onChangeText={e => setEmail(e)}
+          />
+          <Button title={'Enviar'} onPress={Forgot} />
+        </ContainerButton>
+      </Container>
     </ImageBackground>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  containerButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 100,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-    letterSpacing: 4,
-    textAlign: 'center',
-  },
-  textEsqueceu: {
-    color: '#73224F',
-    fontSize: 18,
-    fontWeight: 'bold',
-    letterSpacing: 4,
-    textAlign: 'center',
-  },
-  button: {
-    padding: 20,
-    width: 400,
-    marginTop: 50,
-    borderRadius: 5,
-    backgroundColor: '#73224F',
-  },
-  buttonEsqueceu: {
-    padding: 20,
-    width: 400,
-    marginTop: 15,
-    borderRadius: 5,
-    backgroundColor: 'transparent',
-  },
-});
-export default Auth;
+export default Login;

@@ -1,13 +1,14 @@
 import styled from 'styled-components/native';
 
-type BottomColorProps = {
+type Props = {
   background: boolean;
 };
-export const Button = styled.TouchableOpacity`
+
+export const Button = styled.TouchableOpacity<{background: boolean}>`
   padding: 20px;
   width: 400px;
   margin-top: 10px;
   border-radius: 5px;
-  background-color: ${(props: BottomColorProps) =>
+  background-color: ${(props: Props) =>
     props.background ? '#333' : '#73224f'};
 `;

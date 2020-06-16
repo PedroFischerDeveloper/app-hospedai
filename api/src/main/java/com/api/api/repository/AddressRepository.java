@@ -10,6 +10,6 @@ import com.api.api.models.AddressModel;
 @Repository
 public interface AddressRepository extends CrudRepository <AddressModel, String>  {
     public List<AddressModel> findAll();
-
+    
     public List<AddressModel> findById(long id);
 }

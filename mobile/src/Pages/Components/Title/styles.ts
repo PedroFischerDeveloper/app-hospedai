@@ -7,7 +7,7 @@ type AutoContrast = {
 
 export const Text = styled.Text`
   color: ${(props: AutoContrast) => (props.color ? '#ccc' : '#73224f')};
-  font-size: ${(props: AutoContrast) => (props.size ? '45px' : '35px')};
+  font-size: ${(props: AutoContrast) => (props.size ? '30px' : '25px')};
   font-weight: bold;
   letter-spacing: 2px;
   text-align: center;

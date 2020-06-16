@@ -10,7 +10,7 @@ type Props = {
 export const Scroll = styled.ScrollView`
   flex: 1;
   background-color: ${(props: Props) =>
-    props.background ? '#252525' : 'transparent'};
+    props.background ? '#000' : 'transparent'};
 `;
 export const Container = styled.View`
   flex: 1;
@@ -18,7 +18,7 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
   background-color: ${(props: Props) =>
-    props.background ? '#252525' : 'transparent'};
+    props.background ? '#000' : 'transparent'};
 `;
 export const ContainerButton = styled.View`
   justify-content: center;
@@ -26,13 +26,14 @@ export const ContainerButton = styled.View`
   margin-top: 15px;
 `;
 
-export const Logo = styled.ImageBackground`
+export const Logo = styled.ImageBackground<Props>`
   display: flex;
   width: ${(props: Props) => (props.width ? props.width : '60%;')};
   height: 30%;
   margin: 10px auto;
   justify-content: center;
   align-self: center;
+  background: ${(props: Props) => (props.background ? '#fff' : 'transparent')};
 `;
 
 const GlobalStyles = StyleSheet.create({

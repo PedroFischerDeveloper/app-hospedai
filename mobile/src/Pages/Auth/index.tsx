@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ImageBackground} from 'react-native';
+import {ImageBackground, KeyboardAvoidingView} from 'react-native';
 
 import GlobalStyles, {Container, ContainerButton, Logo} from '../GlobalStyles';
 import {ForgotButton, TextForgot} from './styles';
@@ -41,13 +41,8 @@ const Login = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
-      <Logo
-        width={'50%'}
-        height={'25%'}
-        margin={'auto'}
-        source={require('../assets/Logo.jpeg')}
-      />
       <Container background={contrast} accessible={true}>
+        <Logo background={contrast} source={require('../assets/Logo.png')} />
         <Title title={'Login'} />
         <ContainerButton>
           <Input

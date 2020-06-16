@@ -28,7 +28,7 @@ const object: {
 }[] = [
   {
     id: 0,
-    title: 'Casa',
+    title: 'Apartamento litoral de SP Santos, 2 quartos uma suíte cobertura',
     starts: 5,
     description:
       'Um imóvel, em geral, possui amplo espaço para o lazer de toda a família.Um imóvel, em geral, possui amplo espaço para olazer de toda a família.Um imóvel, em geral, possui amploespaço para o lazer de toda a família.',
@@ -38,7 +38,7 @@ const object: {
   },
   {
     id: 1,
-    title: 'Casa',
+    title: 'Casa com 4 comodos e ótima localização, próximo a praia',
     starts: 5,
     description:
       'Um imóvel, em geral, possui amplo espaço para o lazer de toda a família.Um imóvel, em geral, possui amplo espaço para olazer de toda a família.Um imóvel, em geral, possui amploespaço para o lazer de toda a família.',
@@ -48,7 +48,7 @@ const object: {
   },
   {
     id: 2,
-    title: 'Casa',
+    title: 'Apartamento litoral de SP Santos, 2 quartos uma suíte cobertura',
     starts: 5,
     description:
       'Um imóvel, em geral, possui amplo espaço para o lazer de toda a família.Um imóvel, em geral, possui amplo espaço para olazer de toda a família.Um imóvel, em geral, possui amploespaço para o lazer de toda a família.',
@@ -58,7 +58,7 @@ const object: {
   },
   {
     id: 3,
-    title: 'Casa',
+    title: 'Apartamento litoral de SP Santos, 2 quartos uma suíte cobertura',
     starts: 5,
     description:
       'Um imóvel, em geral, possui amplo espaço para o lazer de toda a família.Um imóvel, em geral, possui amplo espaço para olazer de toda a família.Um imóvel, em geral, possui amploespaço para o lazer de toda a família.',
@@ -87,19 +87,18 @@ const Home = () => {
           keyExtractor={item => String(item.id)}
           showsVerticalScrollIndicator={false}
           renderItem={({item: i}) => (
-            <Box>
-              <TextTitle contrast={contrast}>{i.title}</TextTitle>
+            <Box contrast={contrast}>
               <Row>
                 <LogoDescription
-                  source={require('../assets/Logo.jpeg')}
-                  width={'120px'}
-                  height={'120px'}
+                  background={contrast}
+                  source={require('../assets/Logo.png')}
                 />
-                <Description contrast={contrast}>{i.description}</Description>
+                <Description contrast={contrast}>{i.title}</Description>
               </Row>
-              <Starts contrast={contrast}>Estrelas: {i.starts}</Starts>
-              <Button onPress={() => description(i)}>
-                <ButtonDescription>Ver mais</ButtonDescription>
+              <Button contrast={contrast} onPress={() => description(i)}>
+                <ButtonDescription contrast={contrast}>
+                  Ver mais
+                </ButtonDescription>
               </Button>
             </Box>
           )}

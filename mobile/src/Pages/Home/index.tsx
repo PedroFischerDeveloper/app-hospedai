@@ -25,8 +25,8 @@ const Home = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
-      <Logo source={require('../assets/Logo.jpeg')} />
       <Container background={contrast} accessible={true}>
+        <Logo background={contrast} source={require('../assets/Logo.png')} />
         <Title title={'Seja bem vindo'} />
         <ContainerButton>
           <Button title={'Entrar'} onPress={Login} />

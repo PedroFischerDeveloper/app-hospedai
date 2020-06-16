@@ -11,7 +11,7 @@ import {
   ButtonDescription,
   Starts,
 } from './styles';
-import GlobalStyles from '../GlobalStyles';
+import GlobalStyles, {Container} from '../GlobalStyles';
 // components
 import useContrast from '../Contexts/contrastContext';
 import {useRoute} from '@react-navigation/native';
@@ -21,24 +21,37 @@ const Home = () => {
   const route = useRoute();
   let {item} = route.params;
   console.log(item);
-
   return (
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
-      <Box>
-        <LogoDescription
-          source={require('../assets/Logo.jpeg')}
-          width={'120px'}
-          height={'120px'}
-        />
-        <TextTitle contrast={contrast}>{item.title}</TextTitle>
-        <Description contrast={contrast}>{item.description}</Description>
-        <Starts contrast={contrast}>Estrelas: {item.starts}</Starts>
-        <Button>
-          <ButtonDescription>Ver mais</ButtonDescription>
-        </Button>
-      </Box>
+      <Container background={contrast}>
+        <Box contrast={contrast}>
+          <LogoDescription
+            contrast={contrast}
+            source={require('../assets/Logo.png')}
+          />
+          <Description contrast={contrast}>
+            Descrição: {item.description}
+          </Description>
+          <Description contrast={contrast}>
+            Endereço: {item.address}. {item.city}/{item.uf}
+          </Description>
+          <Description contrast={contrast}>
+            Avaliação: {item.starts}
+          </Description>
+          <Row>
+            <Button contrast={contrast}>
+              <ButtonDescription contrast={contrast}>E-mail</ButtonDescription>
+            </Button>
+            <Button contrast={contrast}>
+              <ButtonDescription contrast={contrast}>
+                Whatssap
+              </ButtonDescription>
+            </Button>
+          </Row>
+        </Box>
+      </Container>
     </ImageBackground>
   );
 };

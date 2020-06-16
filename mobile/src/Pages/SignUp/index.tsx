@@ -51,12 +51,7 @@ const Home = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
-      <Logo
-        width={'50%'}
-        height={'25%'}
-        margin={'auto'}
-        source={require('../assets/Logo.jpeg')}
-      />
+      <Logo background={contrast} source={require('../assets/Logo.png')} />
       <Container background={contrast} accessible={true}>
         <KeyboardAvoidingView>
           <Title title={'Cadastro'} />

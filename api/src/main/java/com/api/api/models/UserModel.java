@@ -17,11 +17,11 @@ public class UserModel implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-    private String nm_usuario;
+    private String email;
 
-	private String nm_email;
+	private String password;
 	
-    private String nm_password;
+    private String phone;
     
 
     public long getId() {
@@ -31,26 +31,25 @@ public class UserModel implements Serializable {
 		this.id = id;
     }
     
-    public String getNome() {
-		return nm_usuario;
-	}
-	public void setNome(String nm_usuario) {
-		this.nm_usuario = nm_usuario;
-    }
-    
     public String getEmail() {
-		return nm_email;
+		return email;
 	}
-	public void setEmail(String nm_email) {
-		this.nm_email = nm_email;
+	public void setEmail(String email) {
+		this.email = email;
     }
-
 
     public String getPassword() {
-		return nm_password;
+		return password;
 	}
-	public void setPassword(String nm_password) {
-		this.nm_password = nm_password;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getPhone() {
+		return password;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
     }
     
     

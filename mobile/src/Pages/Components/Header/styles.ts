@@ -11,10 +11,8 @@ export const Text = styled.Text`
   color: #fff;
 `;
 export const Container = styled.View<{background: boolean}>`
-  height: 80px;
+  height: 50px;
   background: ${(props: Props) => (props.background ? '#252525' : '#73224f')};
   align-items: flex-end;
   justify-content: center;
-  border-color: ${(props: Props) => (props.background ? '#fff' : '#73224f')};
-  border-width: ${(props: Props) => (props.background ? '2px' : '0px')};
 `;

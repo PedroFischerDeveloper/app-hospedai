@@ -18,10 +18,10 @@ public class AddressModel implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
-    private int cd_numero;
-    private String nm_endereco;
-    private String nm_bairro;
-    private String nm_cidade;
+    private int number;
+    private String address;
+    private String city;
+    private String uf;
 
     public long getId() {
         return id;
@@ -30,36 +30,31 @@ public class AddressModel implements Serializable{
         this.id = id;
     }
 
-    public int getNumero() {
-        return cd_numero;
+    public int getNumber() {
+        return number;
     }
-    public void setNumero(int cd_numero) {
-        this.cd_numero = cd_numero;
-    }
-
-
-    public String getEndereco() {
-        return nm_endereco;
-    }
-    public void setEndereco(String nm_endereco) {
-        this.nm_endereco = nm_endereco;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public String getBairro() {
-        return nm_bairro;
+    public String getAddress() {
+        return address;
     }
-    public void setBairro(String nm_bairro) {
-        this.nm_bairro = nm_bairro;
-    }
-
-
-    public String getCidade() {
-        return nm_cidade;
-    }
-    public void setCidade(String nm_cidade) {
-        this.nm_cidade = nm_cidade;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
+    public String getUf() {
+        return uf;
+    }
+    public void setCidade(String uf) {
+        this.uf = uf;
+    }
 }

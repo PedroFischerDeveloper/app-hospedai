@@ -2,8 +2,8 @@ package com.api.api.controller;
 
 import java.util.List;
 
-import com.api.api.models.HelpersModel;
-import com.api.api.repository.HelpersRepository;
+import com.api.api.models.HouseModel;
+import com.api.api.repository.HouseRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,30 +14,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * UserController
- */
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 
-public class HelpersController {
+public class HouseResouce {
     @Autowired
-    HelpersRepository helpersRepository;
+    HouseRepository Repository;
 
     @GetMapping("/helpers")
-    public List<HelpersModel> all() {
-        return helpersRepository.findAll();
+    public List<HouseModel> all() {
+        return Repository.findAll();
     }
     
     @GetMapping("/helpers/{id}")
-    public List<HelpersModel> getId(@PathVariable(value="id")long id) {
-        return helpersRepository.findById(id);
+    public List<HouseModel> getId(@PathVariable(value="id")long id) {
+        return Repository.findById(id);
     }
 
     @PostMapping("/helpers")
-    public HelpersModel store(@RequestBody HelpersModel helpers) {
-        return helpersRepository.save(helpers);
+    public HouseModel store(@RequestBody HouseModel house) {
+        return Repository.save(house);
     }
 
 }

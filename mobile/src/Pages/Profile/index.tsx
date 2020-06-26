@@ -1,25 +1,25 @@
 import React, {useState} from 'react';
 import {ImageBackground, KeyboardAvoidingView} from 'react-native';
 import Header from '../Components/HeaderExternal/Header';
-import GlobalStyles, {Container, Logo} from '../GlobalStyles';
+import GlobalStyles, {
+  ProfileImage,
+  Scroll,
+  UploadButton,
+} from '../GlobalStyles';
 import {normalAlert} from '../Alert';
 import {TextInputMask} from 'react-native-masked-text';
 
-// components
-import Title from '../Components/Title/Title';
 import Button from '../Components/Button/Button';
 import Input from '../Components/Input/Input';
 import useContrast from '../Contexts/contrastContext';
-import {useNavigation} from '@react-navigation/native';
 
-const Home = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+const Profile = () => {
+  const [email, setEmail] = useState('pedro.fischer22@gmail.com');
+  const [password, setPassword] = useState('******');
+  const [name, setName] = useState('Pedro Fischer');
+  const [phone, setPhone] = useState('(13) 99707-5155');
 
   const {contrast} = useContrast();
-  const navigation = useNavigation();
 
   const Create = () => {
     if (!name) {
@@ -35,7 +35,6 @@ const Home = () => {
       normalAlert('Ops... :(', 'Campo telefone é obrigatório');
       return false;
     }
-    navigation.navigate('Home');
   };
 
   return (
@@ -43,22 +42,23 @@ const Home = () => {
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
       <Header />
-      <Container background={contrast} accessible={true}>
+      <Scroll background={contrast} accessible={true}>
         <KeyboardAvoidingView>
-          <Logo background={contrast} source={require('../assets/Logo.png')} />
-          <Title title={'Cadastro'} />
+          <UploadButton>
+            <ProfileImage source={require('../assets/Profile.png')} />
+          </UploadButton>
           <Input
-            placeholder={'NOME: '}
+            placeholder={name}
             onChangeText={e => setName(e)}
             isPassword={false}
           />
           <Input
-            placeholder={'E-MAIL: '}
+            placeholder={email}
             onChangeText={e => setEmail(e)}
             isPassword={false}
           />
           <Input
-            placeholder={'SENHA: '}
+            placeholder={password}
             onChangeText={e => setPassword(e)}
             isPassword={true}
           />
@@ -69,7 +69,7 @@ const Home = () => {
               withDDD: true,
               dddMask: '(99) ',
             }}
-            placeholder={'TELEFONE: '}
+            placeholder={phone}
             value={phone}
             placeholderTextColor={contrast ? '#fff' : '#73224f'}
             onChangeText={(e: string) => setPhone(e)}
@@ -81,9 +81,9 @@ const Home = () => {
           />
           <Button title={'Salvar'} onPress={Create} />
         </KeyboardAvoidingView>
-      </Container>
+      </Scroll>
     </ImageBackground>
   );
 };
 
-export default Home;
+export default Profile;

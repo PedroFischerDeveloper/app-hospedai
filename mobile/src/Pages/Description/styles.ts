@@ -5,39 +5,44 @@ interface Props {
   contrast: boolean;
   colorButton: boolean;
 }
-export const Box = styled.View<Props>`
-  display: flex;
-  width: 430px;
-  padding-left: 10px;
-  padding-right: 10px;
-  align-items: center;
-  border: 1px solid ${(props: Props) => (props.contrast ? '#000' : '#73224f')};
-  border-radius: 5px;
-  background: ${(props: Props) => (props.contrast ? '#000' : 'transparent')};
+export const Box = styled.ScrollView<Props>`
+  flex: 1;
+  padding: 20px;
+  background-color: ${(props: Props) =>
+    props.background ? '#000' : 'transparent'};
 `;
 export const Description = styled.Text<Props>`
   color: ${(props: Props) => (props.contrast ? '#fff' : '#a2a2a2')};
   font-size: ${(props: Props) => (props.contrast ? '20px' : '18px')};
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   letter-spacing: 1px;
   font-weight: bold;
   text-align: justify;
 `;
+export const Divider = styled.View`
+  width: 100%;
+  padding: 1px;
+  margin: 5px 0;
+  opacity: 1;
+  background: #ccc;
+`;
 export const LogoDescription = styled.ImageBackground`
-  margin-top: 10px;
+  display: flex;
+  align-self: center;
   width: 200px;
   height: 200px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 5px;
-  margin-bottom: 60px;
   background: ${(props: Props) => (props.contrast ? '#fff' : 'transparent')};
 `;
 export const Button = styled.TouchableOpacity<Props>`
-  width: 40%;
-  margin-top: 50px;
+  width: 45%;
+  margin-top: 10px;
   margin-bottom: 20px;
   margin-left: 10px;
   margin-right: 10px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   background: ${(props: Props) => (props.contrast ? 'transparent' : '#73224f')};
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch} from 'react-native';
-import {Container, Input} from './styles';
+import {Container} from './styles';
 import useContrast from '../../Contexts/contrastContext';
 
 const Header = () => {
@@ -8,11 +8,6 @@ const Header = () => {
 
   return (
     <Container contrast={contrast}>
-      <Input
-        contrast={contrast}
-        placeholder="Buscar Hospedagem"
-        placeholderTextColor={contrast ? '#fff' : '#73224f'}
-      />
       <Switch
         trackColor={{false: '#333', true: '#fff'}}
         ios_backgroundColor="#73224f"

@@ -1,7 +1,7 @@
 import React from 'react';
 import {ImageBackground} from 'react-native';
-
-import GlobalStyles, {Container, ContainerButton, Logo} from '../GlobalStyles';
+import Header from '../Components/HeaderExternal/Header';
+import GlobalStyles, {Container, Logo} from '../GlobalStyles';
 
 // components
 import Title from '../Components/Title/Title';
@@ -25,13 +25,12 @@ const Home = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
+      <Header />
       <Container background={contrast} accessible={true}>
         <Logo background={contrast} source={require('../assets/Logo.png')} />
         <Title title={'Seja bem vindo'} />
-        <ContainerButton>
-          <Button title={'Entrar'} onPress={Login} />
-          <Button title={'Cadastrar'} onPress={Create} />
-        </ContainerButton>
+        <Button title={'Entrar'} onPress={Login} />
+        <Button title={'Cadastrar'} onPress={Create} />
       </Container>
     </ImageBackground>
   );

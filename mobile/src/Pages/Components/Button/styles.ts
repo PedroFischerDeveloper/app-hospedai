@@ -5,11 +5,10 @@ type Props = {
 };
 
 export const Button = styled.TouchableOpacity<{background: boolean}>`
-  padding: 20px;
-  width: 400px;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  padding: 20px 0 20px 0;
+  width: 100%;
+  margin: 5px 0 20px 0;
+  border-radius: 10px;
   background-color: ${(props: Props) =>
     props.background ? '#333' : '#73224f'};
 `;

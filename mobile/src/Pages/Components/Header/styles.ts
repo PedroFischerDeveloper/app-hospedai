@@ -1,18 +1,24 @@
 import styled from 'styled-components/native';
 
 interface Props {
-  background: boolean;
+  contrast: boolean;
 }
-export const Text = styled.Text`
+export const Input = styled.TextInput`
   font-size: 20px;
-  margin-left: 20px
-  padding-top: 25px;
   align-self: flex-start;
-  color: #fff;
+  width: 80%;
+  color: ${(props: Props) => (props.contrast ? '#fff' : '#73224f')};
+  padding-left: 20px;
+  margin-right: 30px;
+  margin-left: 10px;
+  border-radius: 5px;
+  background: #fff;
 `;
-export const Container = styled.View<{background: boolean}>`
-  height: 50px;
-  background: ${(props: Props) => (props.background ? '#252525' : '#73224f')};
-  align-items: flex-end;
-  justify-content: center;
+export const Container = styled.View<{contrast: boolean}>`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  align-content: center;
+  background: ${(props: Props) => (props.contrast ? '#252525' : '#73224f')};
 `;

@@ -7,8 +7,8 @@ type Props = {
 
 export const Text = styled.Text<{color: boolean; size: boolean}>`
   color: ${(props: Props) => (props.color ? '#ccc' : '#fff')};
-  font-size: ${(props: Props) => (props.size ? '16px' : '14px')};
+  font-size: ${(props: Props) => (props.size ? '20px' : '18px')};
   font-weight: bold;
-  letter-spacing: 4px;
+  letter-spacing: 1px;
   text-align: center;
 `;

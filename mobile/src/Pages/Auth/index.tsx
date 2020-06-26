@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {ImageBackground, KeyboardAvoidingView} from 'react-native';
-
-import GlobalStyles, {Container, ContainerButton, Logo} from '../GlobalStyles';
+import Header from '../Components/HeaderExternal/Header';
+import GlobalStyles, {Container, Logo} from '../GlobalStyles';
 import {ForgotButton, TextForgot} from './styles';
 
-import {errorToast} from '../toast/toast';
+import {normalAlert} from '../Alert';
 
 // components
 import Title from '../Components/Title/Title';
@@ -22,15 +22,15 @@ const Login = () => {
 
   const Auth = () => {
     if (!email) {
-      errorToast('ERROR: O E-MAIL NÃO PODE FICAR EM BRANCO!');
+      normalAlert('Opss...', 'Campo e-mail é obrigatório');
       return false;
     }
 
     if (!password) {
-      errorToast('ERROR: A SENHA NÃO PODE FICAR EM BRANCO!');
+      normalAlert('Opss...', 'Campo e-mail é obrigatório');
       return false;
     }
-    navigation.navigate('Dashboard');
+    navigation.navigate('Home');
   };
 
   const Forgot = () => {
@@ -41,10 +41,11 @@ const Login = () => {
     <ImageBackground
       style={GlobalStyles.container}
       source={require('../assets/Home.png')}>
+      <Header />
       <Container background={contrast} accessible={true}>
-        <Logo background={contrast} source={require('../assets/Logo.png')} />
-        <Title title={'Login'} />
-        <ContainerButton>
+        <KeyboardAvoidingView>
+          <Logo background={contrast} source={require('../assets/Logo.png')} />
+          <Title title={'Login'} />
           <Input
             placeholder={'E-MAIL: '}
             onChangeText={setEmail}
@@ -56,12 +57,13 @@ const Login = () => {
             isPassword={true}
           />
           <Button title={'Logar'} onPress={Auth} />
-        </ContainerButton>
-        <ForgotButton onPress={Forgot}>
-          <TextForgot font={contrast} color={contrast}>
-            Esqueceu a senha ?
-          </TextForgot>
-        </ForgotButton>
+
+          <ForgotButton onPress={Forgot}>
+            <TextForgot font={contrast} color={contrast}>
+              Esqueceu a senha ?
+            </TextForgot>
+          </ForgotButton>
+        </KeyboardAvoidingView>
       </Container>
     </ImageBackground>
   );

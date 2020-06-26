@@ -3,8 +3,7 @@ import {ImageBackground} from 'react-native';
 
 import GlobalStyles, {Container, ContainerButton, Logo} from '../GlobalStyles';
 
-import {errorToast, messageToast} from '../toast/toast';
-
+import {normalAlert} from '../Alert';
 // components
 import Title from '../Components/Title/Title';
 import Button from '../Components/Button/Button';
@@ -23,11 +22,11 @@ const Login = (_props: Props) => {
 
   const Forgot = () => {
     if (!email) {
-      errorToast('ERROR: O CAMPO DE E-MAIL NÃO DEVE FICAR EM BRANCO:');
+      normalAlert('Opss...', 'Campo e-mail é obrigatório');
       return false;
     }
     navigation.navigate('Auth');
-    messageToast('ENVIAMOS UM LINK PARA SEU E-MAIL:');
+    normalAlert('Opss...', 'Enviamos um link para recuperação de senha');
   };
 
   return (
